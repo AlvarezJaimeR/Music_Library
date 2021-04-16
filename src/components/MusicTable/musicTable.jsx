@@ -1,10 +1,10 @@
 import React from 'react';
 
-function MuiscTable(props){
+function MusicTable(props){
     return (
-        <div className = "music-table">
-            <table className="table table-striped">
-            <thead>
+        <div className = "table">
+            <table className="table">
+            <thead className="thed-dark">
                 <tr>
                 <th scope="col">ID #</th>
                 <th scope="col">Album</th>
@@ -16,10 +16,16 @@ function MuiscTable(props){
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>Album1</td>
+                    <td>Artist1</td>
+                    <td>Genre1</td>
+                    <td>Release Date1</td>
+                    <td>Song Title1</td>
                 </tr>
                 <tr>
-                    <th scope="row">2</th>
+                    <td>2</td>
+                    <td>Album2</td>
                 </tr>
             </tbody>
             </table>
@@ -27,4 +33,6 @@ function MuiscTable(props){
     )
 }
 
-export default MuiscTable;
+export default MusicTable;
+
+{/* <div> <MusicCatalog catalog={props.catalog.artist} /> </div> */}

@@ -9,7 +9,8 @@ class App extends Component {
         super(props);
 
         this.state ={
-            musicData: []
+            musicData: [],
+            loading: true
         }
     }
 
@@ -18,8 +19,10 @@ class App extends Component {
         axios.get("http://www.devcodecampmusiclibrary.com/api/music/")
         .then(res => {
             const songs = res.data;
-            console.log(this.state.musicData)
             this.setState({musicData:songs})
+            console.log(this.state.loading)
+            this.setState({loading: false});
+            console.log(this.state.loading)
             console.log(this.state.musicData)
         })
         .catch(err => {
@@ -29,7 +32,9 @@ class App extends Component {
 
     render(){
         return (
+            this.state.loading ? <div>loading...</div>:
             <div className="container-fluid">
+            {console.log(this.state.musicData)}
                 <TitleBar />
                 <MusicTable />
             </div>

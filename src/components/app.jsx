@@ -11,7 +11,6 @@ class App extends Component {
         this.state ={
             musicData: [],
             loading: true,
-            idNum:0
         }
     }
 
@@ -21,9 +20,7 @@ class App extends Component {
         .then(res => {
             const songs = res.data;
             this.setState({musicData:songs})
-            console.log(this.state.loading)
             this.setState({loading: false});
-            console.log(this.state.loading)
             console.log(this.state.musicData)
         })
         .catch(err => {
@@ -31,15 +28,28 @@ class App extends Component {
         })
     }
 
+
+
     render(){
         return (
             this.state.loading ? <div>loading...</div>:
             <div className="container-fluid">
             {console.log(this.state.musicData)}
                 <TitleBar />
-                <MusicTable artist={this.state.musicData[this.state.idNum].artist} album={this.state.musicData[this.state.idNum].album} 
-                genre={this.state.musicData[this.state.idNum].genre} title={this.state.musicData[this.state.idNum].title} 
-                releaseDate={this.state.musicData[this.state.idNum].releaseDate} id={this.state.musicData[this.state.idNum].id}/>
+                <table className ="table">
+                    <thead className="thed-dark">
+                        <tr>
+                        <th scope="col">ID #</th>
+                        <th scope="col">Album</th>
+                        <th scope="col">Artist</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Release Date</th>
+                        <th scope="col">Song Title</th>
+                        </tr>
+                    </thead>
+                {this.state.musicData.map((eachSong)=> 
+                    <MusicTable key={eachSong.id} song={eachSong}/>)}
+                </table>
             </div>
         );
     }

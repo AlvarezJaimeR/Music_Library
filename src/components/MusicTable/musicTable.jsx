@@ -1,36 +1,40 @@
 import React from 'react';
 
+/* class MusicTable extends Component {
+    render(){
+        return(
+            this.props.map((musicTable)=> 
+                <MusicTable key={MusicTable.id} musicTable={musicTable}/>)
+            <div>
+                    <td>{this.props.id}</td>
+                    <td>{this.props.album}</td>
+                    <td>{this.props.artist}</td>
+                    <td>{this.props.genre}</td>
+                    <td>{this.props.releaseDate}</td>
+                    <td>{this.props.title}</td>
+            </div>
+        )
+    }
+} */
+
+export default MusicTable;
+
+
 function MusicTable(props){
     return (
         <div className = "table">
             <table className="table">
-            <thead className="thed-dark">
-                <tr>
-                <th scope="col">ID #</th>
-                <th scope="col">Album</th>
-                <th scope="col">Artist</th>
-                <th scope="col">Genre</th>
-                <th scope="col">Release Date</th>
-                <th scope="col">Song Title</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr>
-                    <td>{props.id}</td>
-                    <td>{props.album}</td>
-                    <td>{props.artist}</td>
-                    <td>{props.genre}</td>
-                    <td>{props.releaseDate}</td>
-                    <td>{props.title}</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Album2</td>
+                    <td>{props.song.id}</td>
+                    <td>{props.song.album}</td>
+                    <td>{props.song.artist}</td>
+                    <td>{props.song.genre}</td>
+                    <td>{props.song.releaseDate}</td>
+                    <td>{props.song.title}</td>
                 </tr>
             </tbody>
             </table>
         </div>
     )
 }
-
-export default MusicTable;

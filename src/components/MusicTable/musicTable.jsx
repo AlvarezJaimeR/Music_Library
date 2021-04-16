@@ -16,12 +16,12 @@ function MusicTable(props){
             </thead>
             <tbody>
                 <tr>
-                    <td>1</td>
-                    <td>Album1</td>
-                    <td>Artist1</td>
-                    <td>Genre1</td>
-                    <td>Release Date1</td>
-                    <td>Song Title1</td>
+                    <td>{props.id}</td>
+                    <td>{props.album}</td>
+                    <td>{props.artist}</td>
+                    <td>{props.genre}</td>
+                    <td>{props.releaseDate}</td>
+                    <td>{props.title}</td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -34,5 +34,3 @@ function MusicTable(props){
 }
 
 export default MusicTable;
-
-{/* <div> <MusicCatalog catalog={props.catalog.artist} /> </div> */}

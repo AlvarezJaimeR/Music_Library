@@ -10,7 +10,8 @@ class App extends Component {
 
         this.state ={
             musicData: [],
-            loading: true
+            loading: true,
+            idNum:0
         }
     }
 
@@ -36,7 +37,9 @@ class App extends Component {
             <div className="container-fluid">
             {console.log(this.state.musicData)}
                 <TitleBar />
-                <MusicTable />
+                <MusicTable artist={this.state.musicData[this.state.idNum].artist} album={this.state.musicData[this.state.idNum].album} 
+                genre={this.state.musicData[this.state.idNum].genre} title={this.state.musicData[this.state.idNum].title} 
+                releaseDate={this.state.musicData[this.state.idNum].releaseDate} id={this.state.musicData[this.state.idNum].id}/>
             </div>
         );
     }

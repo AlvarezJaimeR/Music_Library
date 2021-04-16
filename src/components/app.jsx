@@ -37,7 +37,7 @@ class App extends Component {
             {console.log(this.state.musicData)}
                 <TitleBar />
                 <table className ="table">
-                    <thead className="thed-dark">
+                    <thead className="thead-dark">
                         <tr>
                         <th scope="col">ID #</th>
                         <th scope="col">Album</th>
@@ -47,8 +47,10 @@ class App extends Component {
                         <th scope="col">Song Title</th>
                         </tr>
                     </thead>
-                {this.state.musicData.map((eachSong)=> 
-                    <MusicTable key={eachSong.id} song={eachSong}/>)}
+                    <tbody>
+                        {this.state.musicData.map((eachSong)=> 
+                            <MusicTable key={eachSong.id} song={eachSong}/>)}
+                    </tbody>
                 </table>
             </div>
         );

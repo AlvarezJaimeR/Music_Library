@@ -22,19 +22,13 @@ export default MusicTable;
 
 function MusicTable(props){
     return (
-        <div className = "table">
-            <table className="table">
-            <tbody>
-                <tr>
-                    <td>{props.song.id}</td>
-                    <td>{props.song.album}</td>
-                    <td>{props.song.artist}</td>
-                    <td>{props.song.genre}</td>
-                    <td>{props.song.releaseDate}</td>
-                    <td>{props.song.title}</td>
-                </tr>
-            </tbody>
-            </table>
-        </div>
+        <tr>
+            <td>{props.song.id}</td>
+            <td>{props.song.album}</td>
+            <td>{props.song.artist}</td>
+            <td>{props.song.genre}</td>
+            <td>{props.song.releaseDate}</td>
+            <td>{props.song.title}</td>
+        </tr>
     )
 }

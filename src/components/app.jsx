@@ -3,6 +3,7 @@ import './app.css';
 import axios from 'axios';
 import TitleBar from './TitleBar/titleBar';
 import MusicTable from './MusicTable/musicTable';
+import SearchBar from './SearchBar/searchBar';
 
 class App extends Component {
     constructor(props){
@@ -36,15 +37,16 @@ class App extends Component {
             <div className="container-fluid">
             {console.log(this.state.musicData)}
                 <TitleBar />
+                <SearchBar />
                 <table className ="table">
                     <thead className="thead-dark">
                         <tr>
                         <th scope="col">ID #</th>
+                        <th scope="col">Song Title</th>
                         <th scope="col">Album</th>
                         <th scope="col">Artist</th>
                         <th scope="col">Genre</th>
                         <th scope="col">Release Date</th>
-                        <th scope="col">Song Title</th>
                         </tr>
                     </thead>
                     <tbody>

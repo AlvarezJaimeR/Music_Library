@@ -12,7 +12,12 @@ class App extends Component {
         this.state ={
             musicData: [],
             loading: true,
+            userType: ''
         }
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
     }
 
     //Gather the data
@@ -20,13 +25,27 @@ class App extends Component {
         axios.get("http://www.devcodecampmusiclibrary.com/api/music/")
         .then(res => {
             const songs = res.data;
-            this.setState({musicData:songs})
-            this.setState({loading: false});
-            console.log(this.state.musicData)
+            this.setState({musicData:songs, loading: false})
         })
         .catch(err => {
             console.log(err)
         })
+    }
+
+    handleChange(event){
+        this.setState({userType: event.target.value});
+        let output = this.state.musicData.filter((value)=>{
+            if (this.state.userType === ''){
+                return false;
+            } else if (value.title.toLowerCase().includes(this.state.userType.toLowerCase())){
+                return true;
+            }
+        })
+        console.log(output);
+    }
+
+    handleSubmit(event){
+        this.setState({userType: event.target.value});
     }
 
 
@@ -37,8 +56,10 @@ class App extends Component {
             <div className="container-fluid">
             {console.log(this.state.musicData)}
                 <TitleBar />
-                <SearchBar />
-                <table className ="table">
+                <SearchBar userInput={this.state.userType} 
+                handleChange={() => this.handleChange} 
+                handleSubmit={()=> this.handleSubmit} />
+                <table className ="table table-striped">
                     <thead className="thead-dark">
                         <tr>
                         <th scope="col">ID #</th>

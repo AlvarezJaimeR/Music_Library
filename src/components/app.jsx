@@ -12,11 +12,11 @@ class App extends Component {
         this.state ={
             musicData: [],
             loading: true,
-            userType: ''
+            userType: '',
+            output: []
         }
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
 
     }
 
@@ -25,7 +25,7 @@ class App extends Component {
         axios.get("http://www.devcodecampmusiclibrary.com/api/music/")
         .then(res => {
             const songs = res.data;
-            this.setState({musicData:songs, loading: false})
+            this.setState({musicData:songs, loading: false, output: songs})
         })
         .catch(err => {
             console.log(err)
@@ -34,23 +34,24 @@ class App extends Component {
 
     handleChange(event){
         this.setState({userType: event.target.value});
-        let output = this.state.musicData.filter((value)=>{
-            if (this.state.userType === ''){
-                return false;
-            } else if (value.title.toLowerCase().includes(this.state.userType.toLowerCase())){
+        
+        let filteredData = this.state.musicData.filter((value)=>{
+            console.log("user type", this.state.userType);
+            console.log(value.title);
+            if(value.title.toLowerCase().includes(this.state.userType.toLowerCase())){
                 return true;
-            }
-        })
-        console.log(output);
+            }  
+            });
+        // console.log("filtered data", filteredData);
+         this.setState({
+             musicData: filteredData
+         })
+    
+        //console.log(output);
     }
-
-    handleSubmit(event){
-        this.setState({userType: event.target.value});
-    }
-
-
 
     render(){
+        console.log("music Data", this.state.musicData);
         return (
             this.state.loading ? <div>loading...</div>:
             <div className="container-fluid">

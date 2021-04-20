@@ -9,8 +9,6 @@ function SearchBar(props){
                 <input type="text" placeholder="Search..." 
                 value ={props.userInput} 
                 onChange={props.handleChange()}></input>
-                <button variant="outline-secondary" 
-                onSubmit={props.handleSubmit()}>Search</button>
             </form>
         </div>
     )

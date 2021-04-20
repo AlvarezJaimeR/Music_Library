@@ -38,16 +38,17 @@ class App extends Component {
         let filteredData = this.state.musicData.filter((value)=>{
             console.log("user type", this.state.userType);
             console.log(value.title);
-            if(value.title.toLowerCase().includes(this.state.userType.toLowerCase())){
+            if(value.title.toLowerCase().includes(this.state.userType.toLowerCase()) || 
+            value.artist.toLowerCase().includes(this.state.userType.toLowerCase()) ||
+            value.album.toLowerCase().includes(this.state.userType.toLowerCase()) ||
+            value.genre.toLowerCase().includes(this.state.userType.toLowerCase()) ||
+            value.releaseDate.toLowerCase().includes(this.state.userType.toLowerCase()) ){
                 return true;
             }  
             });
-        // console.log("filtered data", filteredData);
          this.setState({
              musicData: filteredData
          })
-    
-        //console.log(output);
     }
 
     render(){

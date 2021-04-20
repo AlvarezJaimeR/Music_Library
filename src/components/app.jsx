@@ -62,10 +62,10 @@ class App extends Component {
     }
 
     render(){
-        console.log("music Data", this.state.musicData);
+/*         console.log("music Data", this.state.musicData);
         console.log("filter check", this.state.filterCheck);
         console.log('Output', this.state.output);
-        console.log('user type', this.state.userType);
+        console.log('user type', this.state.userType); */
         return (
             this.state.loading ? <div>loading...</div>:
             <div className="container-fluid">
@@ -75,7 +75,7 @@ class App extends Component {
                 handleChange={() => this.handleChange} 
                 handleSubmit={()=> this.handleSubmit} />
                 <table className ="table table-striped">
-                    <thead className="thead-dark">
+                    <thead className="table-header">
                         <tr>
                         <th scope="col">ID #</th>
                         <th scope="col">Song Title</th>
@@ -85,7 +85,7 @@ class App extends Component {
                         <th scope="col">Release Date</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className= "table-striped table-body">
                         {this.filtered(this.state.filterCheck)}
                     </tbody>
                 </table>

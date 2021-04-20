@@ -1,0 +1,14 @@
+.table-header{
+    text-align: center;
+    border: 1px solid black;
+    font-weight: bolder;
+    background-color: black;
+    color: white;
+}
+
+.table-body{
+    text-align: center;
+    border: 1px solid black;
+    font-weight: bolder;
+    color: rgb(1, 11, 17);
+}

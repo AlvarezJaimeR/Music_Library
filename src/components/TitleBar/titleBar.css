@@ -1,6 +1,7 @@
 .titlebar-nav {
-    background-color: silver;
+    background-image: url('download.png');
     width: 100%;
+    text-align: center;
 }
 
 .h1{

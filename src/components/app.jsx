@@ -13,7 +13,8 @@ class App extends Component {
             musicData: [],
             loading: true,
             userType: '',
-            output: []
+            output: [],
+            filterCheck: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -36,8 +37,6 @@ class App extends Component {
         this.setState({userType: event.target.value});
         
         let filteredData = this.state.musicData.filter((value)=>{
-            console.log("user type", this.state.userType);
-            console.log(value.title);
             if(value.title.toLowerCase().includes(this.state.userType.toLowerCase()) || 
             value.artist.toLowerCase().includes(this.state.userType.toLowerCase()) ||
             value.album.toLowerCase().includes(this.state.userType.toLowerCase()) ||
@@ -47,12 +46,26 @@ class App extends Component {
             }  
             });
          this.setState({
-             musicData: filteredData
+             output: filteredData, filterCheck: true
          })
+    }
+
+    filtered(userKeyPressed){
+        if (userKeyPressed === false || this.state.output === ''){
+            return this.state.musicData.map((eachSong)=> 
+                <MusicTable key={eachSong.id} song={eachSong}/>)
+            }
+        else if(userKeyPressed === true){
+            return this.state.output.map((eachSong)=> 
+                <MusicTable key={eachSong.id} song={eachSong}/>)
+            }
     }
 
     render(){
         console.log("music Data", this.state.musicData);
+        console.log("filter check", this.state.filterCheck);
+        console.log('Output', this.state.output);
+        console.log('user type', this.state.userType);
         return (
             this.state.loading ? <div>loading...</div>:
             <div className="container-fluid">
@@ -73,8 +86,7 @@ class App extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.musicData.map((eachSong)=> 
-                            <MusicTable key={eachSong.id} song={eachSong}/>)}
+                        {this.filtered(this.state.filterCheck)}
                     </tbody>
                 </table>
             </div>
